@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* src/index.css ya src/main.css me top par */
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/Poppins-Medium.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'font-1';
+  src: url('./assets/65e64a2bd5a20f5ca8798306_THICCCBOI-SemiBold.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+
