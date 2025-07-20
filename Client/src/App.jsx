@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom"
 import Home from "./Home";
 import PrivacyPolicy from "./Components/PrivacyPolicy";
 import About from "./About";
-import Faqyt from "./Components/faq";
+import Faqyt from "./Components/Faq";
 import RefundPolicyPage from "./RefundPolicyPage";
 import Terms from "./Components/Terms";
 import Contact from "./Components/Contact";

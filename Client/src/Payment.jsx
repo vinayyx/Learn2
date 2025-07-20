@@ -32,7 +32,8 @@ function Payment() {
     }
 
     try {
-      const { data: order } = await axios.post("http://localhost:3000/order");
+      const { data: order } = await axios.post(`${import.meta.env.VITE_BACK_END_URL}/order`);
+
 
       const options = {
         key: import.meta.env.VITE_RAZORPAY_SECRET_KEY,
@@ -44,7 +45,7 @@ function Payment() {
         prefill: { email: email },
         handler: async function (response) {
           try {
-            const res = await axios.post("http://localhost:3000/verify", {
+            const res = await axios.post(`${import.meta.env.VITE_BACK_END_URL}/verify`, {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
