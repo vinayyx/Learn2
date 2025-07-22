@@ -26,22 +26,38 @@ function Page2() {
 
             {/* Cards Section */}
             <div className="w-full flex flex-wrap gap-6 md:gap-10 justify-center mt-10 items-start p-2 sm:p-4">
-                {[1, 2, 3, 4].map((_, index) => (
+                {[
+                    {
+                        title: "Don't know what to upload on YouTube?",
+                        desc: "Practical insights into identifying your niche, understanding your audience, and creating a content strategy that works.",
+                    },
+                    {
+                        title: "YouTube Automation Video Course",
+                        desc: "The course is the foundation of our program. We are making constant updates to make sure it covers everything you need to know about YouTube Automation!",
+                    },
+                    {
+                        title: "Struggling to pick a topic?",
+                        desc: "Learn how to align your passion with what people actually watch.",
+                    },
+                    {
+                        title: "From confusion to clarity",
+                        desc: "Discover the step-by-step method to build a content plan that grows.",
+                    },
+                ].map((item, index) => (
                     <div
                         key={index}
                         className="w-full sm:w-[48%] bg-gradient-to-br from-[#1e293b] via-[#334155] to-[#475569] rounded-xl shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 p-6 sm:p-8 flex flex-col gap-4"
                     >
                         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
-                            {index === 1 ? "YouTube Automation Video Course" : "Don't know what to upload on Youtube"}
+                            {item.title}
                         </h1>
                         <p className="text-sm sm:text-base md:text-lg text-gray-300">
-                            {index === 1
-                                ? "The course is the foundation of our program. We are making constant updates to make sure it covers everything you need to know about YouTube Automation!"
-                                : "Practical insights into identifying your niche, understanding your audience, and creating a content strategy that works"}
+                            {item.desc}
                         </p>
                     </div>
                 ))}
             </div>
+
 
             {/* CTA Button */}
             <button

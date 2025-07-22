@@ -34,7 +34,6 @@ function Payment() {
     try {
       const { data: order } = await axios.post(`${import.meta.env.VITE_BACK_END_URL}/order`);
 
-
       const options = {
         key: import.meta.env.VITE_RAZORPAY_SECRET_KEY,
         amount: order.amount,
@@ -120,11 +119,12 @@ function Payment() {
           <div className="text-sm text-red-400 font-medium mb-1">🔥 50% OFF – Today Only!</div>
           <h2 className="text-2xl font-bold mb-1">Secure Your Spot</h2>
           <p className="text-indigo-300 text-xl mb-4">
-            ₹299<span className="line-through text-slate-400 text-sm ml-2">₹1000</span>
-            <span className="ml-2 text-green-400 text-sm">Save ₹701</span>
-            <p className="text-gray-400 text-sm mt-2">
+            ₹499<span className="line-through text-slate-400 text-sm ml-2">₹1000</span>
+            <span className="ml-2 text-green-400 text-sm">Save ₹501</span>
+            <span className="text-gray-400 text-sm mt-2">
               Course access will be sent to your email. Double-check it.
-            </p>
+            </span>
+
           </p>
 
 
@@ -140,7 +140,7 @@ function Payment() {
             onClick={loadRazorpay}
             className="w-full bg-indigo-600 hover:bg-indigo-700 p-3 rounded text-white font-medium transition"
           >
-            🚀 Pay ₹299 & Start Learning
+            🚀 Pay ₹499 & Start Learning
           </button>
           <p className="text-xs text-slate-400 mt-2 text-center">
             Secure payment powered by Razorpay
