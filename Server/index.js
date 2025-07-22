@@ -14,6 +14,7 @@ connectDB()
 app.use(cors({
    origin: "https://learnytix.in", 
   methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
 }));
 
 
