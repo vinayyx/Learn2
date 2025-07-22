@@ -12,8 +12,8 @@ app.use(express.json());
 connectDB()
 
 app.use(cors({
-  origin: "http://localhost:5173", // frontend URL (Vite dev server)
-  credentials: true
+   origin: "https://learnytix.in", 
+  methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 
 
