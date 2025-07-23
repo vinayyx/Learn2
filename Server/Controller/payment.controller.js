@@ -7,7 +7,7 @@ dotenv.config();
 
 export const createOrder = async (req, res) => {
     const options = {
-        amount: 1000, // Amount in paisa (₹50)
+        amount: 49900, // Amount in paisa (₹50)
         currency: "INR",
         receipt: `receipt_${Date.now()}`,
     };
