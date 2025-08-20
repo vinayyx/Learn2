@@ -1,13 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 function Payment() {
   const [email, setEmail] = useState("");
-  const navigate = useNavigate()
-
-
+  const navigate = useNavigate();
 
   const loadScript = (src) => {
     return new Promise((resolve) => {
@@ -32,10 +30,14 @@ function Payment() {
     }
 
     try {
-      const { data: order } = await axios.post(`${import.meta.env.VITE_BACK_END_URL}/order`);
+      // 🔹 Create order from backend
+      const { data: order } = await axios.post(
+        `${import.meta.env.VITE_BACK_END_URL}/order`,
+        { email } // send email too if you want to store
+      );
 
       const options = {
-        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID, // ✅ Only Key ID in frontend
         amount: order.amount,
         currency: order.currency,
         name: "Course Purchase",
@@ -44,6 +46,7 @@ function Payment() {
         prefill: { email: email },
         handler: async function (response) {
           try {
+            // 🔹 Verify payment on backend
             const res = await axios.post(`${import.meta.env.VITE_BACK_END_URL}/verify`, {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
@@ -51,27 +54,24 @@ function Payment() {
               email: email,
             });
 
-            navigate("/successful")
             toast.success(res.data.message);
-
-
+            navigate("/successful");
           } catch (err) {
             toast.error("Payment verification failed");
             console.log(err.response?.data || err.message);
           }
         },
+        theme: {
+          color: "#4f46e5",
+        },
       };
 
       const rzp = new window.Razorpay(options);
       rzp.open();
-
-
     } catch (err) {
       toast.error("Something went wrong while creating order");
       console.log(err.response?.data || err.message);
     }
-
-
   };
 
   return (
@@ -121,16 +121,14 @@ function Payment() {
           <p className="text-indigo-300 text-xl mb-4">
             ₹499<span className="line-through text-slate-400 text-sm ml-2">₹1000</span>
             <span className="ml-2 text-green-400 text-sm">Save ₹501</span>
-            <span className="text-gray-400 text-sm mt-2">
+            <span className="text-gray-400 text-sm mt-2 block">
               Course access will be sent to your email. Double-check it.
             </span>
-
           </p>
-
 
           <input
             type="email"
-            placeholder="Enter your email "
+            placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full p-3 rounded bg-slate-700 text-white mb-4 border border-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
