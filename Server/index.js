@@ -7,19 +7,15 @@ import route from "./Routes/contact.route.js";
 
 dotenv.config();
 const app = express();
+app.use(cors());
 app.use(express.json());
 connectDB()
 
-
 app.use(cors({
-  origin: [process.env.FrontendURL, "http://localhost:3000"], // dono allow karo
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
+   origin: process.env.FrontendURL, 
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
 }));
-
-// Preflight request handle explicitly
-app.options("*", cors());
 
 
 
