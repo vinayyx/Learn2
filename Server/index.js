@@ -11,7 +11,6 @@ app.use(cors());
 app.use(express.json());
 connectDB()
 
-import cors from "cors";
 
 app.use(cors({
   origin: [process.env.FrontendURL, "http://localhost:3000"], // dono allow karo
@@ -20,7 +19,8 @@ app.use(cors({
   credentials: true
 }));
 
-
+// Preflight request handle explicitly
+app.options("*", cors());
 
 
 
