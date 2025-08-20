@@ -12,7 +12,7 @@ app.use(express.json());
 connectDB()
 
 app.use(cors({
-   origin: "https://learnytix.in", 
+   origin: process.env.FrontendURL, 
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));
