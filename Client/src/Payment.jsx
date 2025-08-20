@@ -35,7 +35,7 @@ function Payment() {
       const { data: order } = await axios.post(`${import.meta.env.VITE_BACK_END_URL}/order`);
 
       const options = {
-        key: import.meta.env.VITE_RAZORPAY_SECRET_KEY,
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
         amount: order.amount,
         currency: order.currency,
         name: "Course Purchase",
